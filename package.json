@@ -1,0 +1,55 @@
+{
+  // Nome do projeto
+  "name": "whatsapp-api",
+
+  // Versão do projeto
+  "version": "1.0.0",
+
+  // Descrição breve do projeto
+  "description": "Whatsapp api Web",
+
+  // Ponto de entrada principal do aplicativo
+  "main": "app.js",
+
+  // Scripts definidos para facilitar a execução do aplicativo e testes
+  "scripts": {
+    // Comando para iniciar o aplicativo usando o Node.js
+    "start": "node app.js",
+
+    // Comando para iniciar o aplicativo usando o Nodemon (reinicia automaticamente quando há alterações)
+    "start:dev": "nodemon app.js",
+
+    // Comando de teste (imprime um erro indicando que nenhum teste foi especificado)
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  // Palavras-chave associadas ao projeto
+  "keywords": [
+    "whatsapp-api",
+    "node.js"
+  ],
+ 
+  "author": "Gabriel",
+
+  // Licença sob a qual o projeto é distribuído
+  "license": "MIT",
+
+  // Dependências do projeto (bibliotecas utilizadas)
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-validator": "^6.9.2",
+    "http": "0.0.1-security",
+    "mime-types": "^2.1.32",
+    "qrcode": "^1.4.4",
+    "socket.io": "2.3.0",
+    // Dependência específica com uma versão de um repositório do GitHub
+    "whatsapp-web.js": "https://github.com/Julzk/whatsapp-web.js/tarball/jkr_hotfix_8"
+  },
+
+  // Dependências de desenvolvimento (utilizadas apenas durante o desenvolvimento, não em produção)
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistema WhatsApp Mensagens!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Esta parte é opcional, apenas para melhorar os estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px;
+    }
+    #app {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    #qrcode {
+      display: none; /* Mostrado quando o código QR é recebido */
+      width: 100%;
+      margin: 10px 0;
+      border: 1px solid #efefef;
+      border-radius: 4px;
+    }
+    ul.logs {
+      max-height: 150px;
+      padding: 15px 15px 15px 30px;
+      margin-top: 5px;
+      border-radius: 4px;
+      overflow-y: auto;
+      background: #efefef;
+      color: #666;
+      font-size: 14px;
+    }
+    ul.logs li:first-child {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+	<div id="app">
+		<img src="" alt="QR Code" id="qrcode">
+		<h3>Logs:</h3>
+		<ul class="logs"></ul>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			// Inicialização do Socket.IO
+			var socket = io();
+
+			// Evento para lidar com mensagens recebidas
+			socket.on('message', function(msg) {
+				$('.logs').prepend($('<li>').text(msg));
+			});
+
+			// Evento para lidar com o código QR recebido
+			socket.on('qr', function(src) {
+				$('#qrcode').attr('src', src);
+				$('#qrcode').show();
+			});
+
+			// Evento para lidar quando o sistema está pronto
+			socket.on('ready', function(data) {
+				$('#qrcode').hide();
+			});
+
+			// Evento para lidar quando a autenticação é bem-sucedida
+			socket.on('authenticated', function(data) {
+				$('#qrcode').hide();
+			});
+		});
+	</script>
+</body>
+</html>
