@@ -182,7 +182,6 @@ io.on('connection', function(socket) {
   });
 });
 
-// // ... (código anterior)
 
 // Rota para enviar mensagem
 app.post('/send-message', async (req, res) => {
